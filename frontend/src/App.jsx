@@ -11,6 +11,7 @@ import ImageCompress from "./pages/ImageCompress";
 import ImageResize from "./pages/ImageResize";
 import ImageUpscale from "./pages/ImageUpscale";
 import ImageDpi from "./pages/ImageDpi";
+import ImageGrayScale from "./pages/ImageGrayScale";
 import ImageMetadata from "./pages/ImageMetadata";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/pdf-to-png" element={<PdfPng />} />
         <Route path="/image-to-webp" element={<ImageWebp />} />
         <Route path="/image-to-jpg" element={<ImageJpg />} />
+        <Route path="/image-to-grayscale" element={<ImageGrayScale />} />
         <Route path="/remove-bg" element={<RemoveBg />} />
         <Route path="/rotate-flip" element={<RotateFlip />} />
         <Route path="/image-compress" element={<ImageCompress />} />
