@@ -3,6 +3,7 @@ import "./App.css";
 import Layout from "./components/Layout/Layout";
 import LandingPage from "./pages/LandingPage";
 import PdfPng from "./pages/PdfPng";
+import PdfDocx from "./pages/PdfDocx";
 import ImageWebp from "./pages/ImageWbp";
 import ImageJpg from "./pages/ImageJpg";
 import RemoveBg from "./pages/RemoveBg";
@@ -22,6 +23,7 @@ function App() {
       <Route element={<Layout />}>
       
         <Route path="/pdf-to-png" element={<PdfPng />} />
+        <Route path="/pdf-to-word" element={<PdfDocx />} />
         <Route path="/image-to-webp" element={<ImageWebp />} />
         <Route path="/image-to-jpg" element={<ImageJpg />} />
         <Route path="/remove-bg" element={<RemoveBg />} />
