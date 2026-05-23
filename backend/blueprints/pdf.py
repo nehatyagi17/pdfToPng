@@ -20,6 +20,13 @@ def convert_pdf_to_png():
 
         if pdf_file.filename == "":
             return error("No file selected")
+        
+        # --- NEW CODE: Check if the file is a PDF ---
+        if not pdf_file.filename.lower().endswith(".pdf"):
+            return error("Invalid file format. Please upload a PDF file.")
+        # --------------------------------------------
+        
+        # Read PDF into memory and open from bytes
 
         # Read PDF into memory and open from bytes
         pdf_bytes = pdf_file.read()
@@ -49,5 +56,5 @@ def convert_pdf_to_png():
         )
 
     except Exception as e:
-        traceback.print_exc()
-        return error(str(e), 500)
+# --- NEW CODE: Handle corrupted PDFs gracefully ---
+        return error("The provided PDF file appears to be corrupted or unreadable.")
