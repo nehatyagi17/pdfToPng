@@ -64,6 +64,15 @@ const tools = [
     iconGradient: "from-indigo-500 to-violet-500",
   },
   {
+    id: "pdf-watermark",
+    name: "PDF Watermark",
+    icon: <FileText />,
+    description: "Add text or image watermarks to PDF files.",
+    path: "/pdf-watermark",
+    gradient: "from-cyan-500/10 to-teal-500/10",
+    iconGradient: "from-cyan-500 to-teal-500",
+  },
+  {
     id: "image-compress",
     name: "Image Compressor",
     icon: <Sliders />,
