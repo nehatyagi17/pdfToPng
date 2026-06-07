@@ -24,7 +24,7 @@ function ImageWbp() {
     };
   }, []);
 
-  const onSuccess = (responseBlob, originalFileName) => {
+  const onSuccess = (responseBlob) => {
     setConvertedSize(responseBlob.size);
     return "Success! Your WebP file has been downloaded.";
   };

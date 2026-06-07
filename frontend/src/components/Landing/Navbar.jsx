@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FileText, Github, Menu, X, Sun, Moon } from "lucide-react";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../../context/theme-context";
 
 const Navbar = () => {
   const { isDark, toggleTheme } = useTheme();
@@ -84,7 +84,17 @@ const Navbar = () => {
               ⭐ Star on GitHub {stars !== null && `• ${stars}`}
             </span>
           </a>
-          <button onClick={toggleTheme} className="p-2 rounded-xl bg-white dark:bg-gray-800 border border-slate-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all" aria-label="Toggle dark mode">{isDark ? <Sun className="w-5 h-5 text-yellow-400" /> : <Moon className="w-5 h-5 text-slate-600" />}</button>
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-xl bg-white dark:bg-gray-800 border border-slate-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all"
+            aria-label="Toggle dark mode"
+          >
+            {isDark ? (
+              <Sun className="w-5 h-5 text-yellow-400" />
+            ) : (
+              <Moon className="w-5 h-5 text-slate-600" />
+            )}
+          </button>
         </div>
 
         {/* For Mobile */}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation, Outlet, useNavigate } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import { Menu, Sun, Moon, Home } from "lucide-react";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../../context/theme-context";
 
 const Layout = () => {
   const { isDark, toggleTheme } = useTheme();
@@ -35,8 +35,16 @@ const Layout = () => {
         onClose={closeMobileMenu}
       />
       <main className="flex-1 overflow-y-auto relative">
-        <button onClick={toggleTheme} className="fixed top-4 right-4 z-50 p-2 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-lg transition-all duration-300" aria-label="Toggle dark mode">
-          {isDark ? <Sun className="w-5 h-5 text-yellow-400" /> : <Moon className="w-5 h-5 text-slate-600" />}
+        <button
+          onClick={toggleTheme}
+          className="fixed top-4 right-4 z-50 p-2 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-lg transition-all duration-300"
+          aria-label="Toggle dark mode"
+        >
+          {isDark ? (
+            <Sun className="w-5 h-5 text-yellow-400" />
+          ) : (
+            <Moon className="w-5 h-5 text-slate-600" />
+          )}
         </button>
 
         {!isLandingPage && (
@@ -52,7 +60,10 @@ const Layout = () => {
         {isMobile && (
           <header className="bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-30 border-b border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between p-4">
-              <button onClick={toggleMobileMenu} className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors">
+              <button
+                onClick={toggleMobileMenu}
+                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+              >
                 <Menu className="w-6 h-6 text-slate-700 dark:text-slate-300" />
               </button>
               <h1 className="text-lg font-bold text-blue-600">pdfToPng</h1>

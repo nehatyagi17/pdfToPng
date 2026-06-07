@@ -24,7 +24,7 @@ function ImageJpg() {
     };
   }, []);
 
-  const onSuccess = (responseBlob, originalFileName) => {
+  const onSuccess = (responseBlob) => {
     setConvertedSize(responseBlob.size);
     return "Success! Your JPEG file has been downloaded.";
   };
