@@ -15,6 +15,7 @@ import {
   Palette,
   Droplets,
   QrCode, 
+  Lock,
 } from "lucide-react";
 
 const tools = [
@@ -89,6 +90,16 @@ const tools = [
     path: "/pdf-watermark",
     gradient: "from-cyan-500/10 to-teal-500/10",
     iconGradient: "from-cyan-500 to-teal-500",
+  },
+  {
+    id: "pdf-protect",
+    name: "Protect PDF",
+    category: "PDF Tools",
+    icon: <Lock />,
+    description: "Encrypt and password-protect your PDF documents.",
+    path: "/pdf-protect",
+    gradient: "from-red-500/10 to-rose-500/10",
+    iconGradient: "from-red-500 to-rose-500",
   },
   {
     id: "image-compress",

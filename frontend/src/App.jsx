@@ -35,6 +35,7 @@ const ImageOCR = lazy(() => import("./pages/ImageOCR"));
 const ImageWatermark = lazy(() => import("./pages/ImageWatermark"));
 const BlurImage = lazy(()=> import("./pages/BlurImage"))
 const MdToHtml = lazy(()=> import("./pages/MdToHtml"))
+const PdfProtect = lazy(() => import("./pages/PdfProtect"));
 
 // Informational pages (linked from the footer)
 const About = lazy(() => import("./pages/About"));
@@ -70,6 +71,7 @@ function App() {
             <Route path="/pdf-rotate-flip" element={<PdfRotateFlip />} />
             <Route path="/pdf-sign" element={<PdfSign />} />
             <Route path="/pdf-watermark" element={<PDFWatermark />} />
+            <Route path="/pdf-protect" element={<PdfProtect />} />
 
             <Route path="/image-blur" element={<BlurImage />} />
             <Route path="/image-to-webp" element={<ImageWbp />} />
