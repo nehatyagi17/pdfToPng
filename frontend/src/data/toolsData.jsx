@@ -16,6 +16,7 @@ import {
   Droplets,
   QrCode,
   Lock,
+  LockOpen,
   Tags,
 } from "lucide-react";
 
@@ -101,6 +102,16 @@ const tools = [
     path: "/pdf-protect",
     gradient: "from-red-500/10 to-rose-500/10",
     iconGradient: "from-red-500 to-rose-500",
+  },
+  {
+    id: "pdf-unlock",
+    name: "Unlock PDF",
+    category: "PDF Tools",
+    icon: <LockOpen />,
+    description: "Remove password protection from your PDF documents.",
+    path: "/pdf-unlock",
+    gradient: "from-green-500/10 to-emerald-500/10",
+    iconGradient: "from-green-500 to-emerald-500",
   },
   {
     id: "pdf-metadata",
