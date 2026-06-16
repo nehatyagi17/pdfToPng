@@ -69,7 +69,7 @@ function PdfPageNumber() {
       const pdfDoc = await PDFDocument.load(arrayBuffer);
       const pages = pdfDoc.getPages();
       const total = pages.length;
-      
+
       const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
 
       pages.forEach((page, index) => {
@@ -116,15 +116,15 @@ function PdfPageNumber() {
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      
+
       const baseName = file.name.replace(/\.pdf$/i, "");
       a.download = `${baseName}_numbered.pdf`;
-      
+
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       window.URL.revokeObjectURL(url);
-      
+
       setStatusMessage("Success! Your numbered PDF is downloading.");
     } catch (err) {
       console.error("Error adding page numbers: ", err);
@@ -139,12 +139,12 @@ function PdfPageNumber() {
   };
 
   return (
-    <div className="w-full max-w-[750px] mx-auto p-10 text-center flex flex-col justify-center items-center bg-gradient-to-br from-[#f6f8fa] to-white rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.08)] overflow-hidden">
-      <h1 className="mb-10 text-[#1a1a2e] text-5xl font-bold tracking-tight relative inline-block after:content-[''] after:absolute after:w-[60px] after:h-1 after:bg-gradient-to-r after:from-[#4361ee] after:to-[#7209b7] after:-bottom-2.5 after:left-1/2 after:-translate-x-1/2 after:rounded-sm">
+    <div className="w-full max-w-[750px] mx-auto p-10 text-center flex flex-col justify-center items-center bg-gradient-to-br from-[#f6f8fa] to-white dark:from-slate-900 dark:to-slate-800 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.08)] overflow-hidden">
+      <h1 className="mb-10 text-[#1a1a2e] dark:text-white text-5xl font-bold tracking-tight relative inline-block after:content-[''] after:absolute after:w-[60px] after:h-1 after:bg-gradient-to-r after:from-[#4361ee] after:to-[#7209b7] after:-bottom-2.5 after:left-1/2 after:-translate-x-1/2 after:rounded-sm">
         PDF Page Numbering
       </h1>
 
-      <p className="text-gray-500 text-sm mb-8 -mt-6">
+      <p className="text-gray-500 dark:text-gray-400 text-sm mb-8 -mt-6">
         Add custom page numbers to your PDF documents entirely in the browser.
       </p>
 
@@ -170,7 +170,7 @@ function PdfPageNumber() {
 
         {file && !loading && (
           <div className="w-full mb-6 bg-white border border-gray-200 rounded-xl p-6 shadow-sm text-left animate-in fade-in slide-in-from-bottom-4 duration-300">
-            <p className="text-sm font-semibold text-gray-700 flex items-center gap-2 mb-6">
+            <p className="text-sm font-semibold text-gray-700 dark:text-gray-200 flex items-center gap-2 mb-6">
               <LayoutGrid className="w-4 h-4 text-[#4361ee]" />
               Page Numbering Options
             </p>
@@ -178,13 +178,13 @@ function PdfPageNumber() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Numbering Style */}
               <label className="flex flex-col gap-1.5">
-                <span className="text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <span className="text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
                   Numbering Style
                 </span>
                 <select
                   value={style}
                   onChange={(e) => setStyle(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-[#1a1a2e] text-sm font-medium focus:outline-none focus:border-[#4361ee] focus:ring-2 focus:ring-[#4361ee]/15 transition-all"
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-900 text-[#1a1a2e] dark:text-white text-sm font-medium focus:outline-none focus:border-[#4361ee] focus:ring-2 focus:ring-[#4361ee]/15 transition-all"
                 >
                   <option value="simple">Simple (1, 2, 3...)</option>
                   <option value="page-of">Page X of Y</option>
@@ -194,13 +194,13 @@ function PdfPageNumber() {
 
               {/* Position */}
               <label className="flex flex-col gap-1.5">
-                <span className="text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <span className="text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
                   Position
                 </span>
                 <select
                   value={position}
                   onChange={(e) => setPosition(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-[#1a1a2e] text-sm font-medium focus:outline-none focus:border-[#4361ee] focus:ring-2 focus:ring-[#4361ee]/15 transition-all"
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-900 text-[#1a1a2e] dark:text-white text-sm font-medium focus:outline-none focus:border-[#4361ee] focus:ring-2 focus:ring-[#4361ee]/15 transition-all"
                 >
                   <option value="bottom-center">Bottom Center</option>
                   <option value="bottom-right">Bottom Right</option>
@@ -211,7 +211,7 @@ function PdfPageNumber() {
 
               {/* Font Size */}
               <label className="flex flex-col gap-2">
-                <span className="text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <span className="text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
                   Font Size ({fontSize}pt)
                 </span>
                 <div className="flex items-center gap-3">
@@ -221,14 +221,14 @@ function PdfPageNumber() {
                     max={24}
                     value={fontSize}
                     onChange={(e) => setFontSize(Number(e.target.value))}
-                    className="h-2 w-full cursor-pointer appearance-none rounded-full bg-gray-200"
+                    className="h-2 w-full cursor-pointer appearance-none rounded-full bg-gray-200 dark:bg-slate-700"
                   />
                 </div>
               </label>
 
               {/* Margin X */}
               <label className="flex flex-col gap-2">
-                <span className="text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <span className="text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
                   Horizontal Margin ({marginX}px)
                 </span>
                 <div className="flex items-center gap-3">
@@ -239,14 +239,14 @@ function PdfPageNumber() {
                     value={marginX}
                     disabled={position.includes("center")}
                     onChange={(e) => setMarginX(Number(e.target.value))}
-                    className="h-2 w-full cursor-pointer appearance-none rounded-full bg-gray-200 disabled:opacity-40"
+                    className="h-2 w-full cursor-pointer appearance-none rounded-full bg-gray-200 dark:bg-slate-700 disabled:opacity-40"
                   />
                 </div>
               </label>
 
               {/* Margin Y */}
               <label className="flex flex-col gap-2 md:col-span-2">
-                <span className="text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <span className="text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
                   Vertical Margin ({marginY}px)
                 </span>
                 <div className="flex items-center gap-3">
@@ -256,7 +256,7 @@ function PdfPageNumber() {
                     max={100}
                     value={marginY}
                     onChange={(e) => setMarginY(Number(e.target.value))}
-                    className="h-2 w-full cursor-pointer appearance-none rounded-full bg-gray-200"
+                    className="h-2 w-full cursor-pointer appearance-none rounded-full bg-gray-200 dark:bg-slate-700"
                   />
                 </div>
               </label>
@@ -284,13 +284,12 @@ function PdfPageNumber() {
 
         {statusMessage && (
           <p
-            className={`mt-6 text-[0.95rem] flex items-center justify-center gap-2 ${
-              statusMessage.toLowerCase().includes("error")
+            className={`mt-6 text-[0.95rem] flex items-center justify-center gap-2 ${statusMessage.toLowerCase().includes("error")
                 ? "text-red-500"
                 : statusMessage.toLowerCase().includes("success")
-                ? "text-green-600 animate-pulse"
-                : "text-[#4b5563]"
-            }`}
+                  ? "text-green-600 animate-pulse"
+                  : "text-[#4b5563] dark:text-gray-300"
+              }`}
           >
             {statusMessage.toLowerCase().includes("success") && (
               <CheckCircle className="w-4 h-4 shrink-0" />

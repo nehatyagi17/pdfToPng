@@ -188,18 +188,18 @@ export default function PdfReorder() {
   };
 
   return (
-    <div className="w-full max-w-[1100px] mx-auto p-6 md:p-10 text-center flex flex-col items-center bg-gradient-to-br from-gray-50 to-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden">
+    <div className="w-full max-w-[1100px] mx-auto p-6 md:p-10 text-center flex flex-col items-center bg-gradient-to-br from-gray-50 to-white dark:from-[#0f172a] dark:to-[#1e293b] rounded-3xl shadow-xl border border-gray-200 dark:border-slate-700 overflow-hidden">
       <Toaster position="top-right" richColors />
 
       <motion.h1
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="mb-4 text-[#1a1a2e] text-5xl font-extrabold tracking-tight"
+        className="mb-4 text-[#1a1a2e] dark:text-white text-5xl font-extrabold tracking-tight"
       >
         PDF Reorder Pages
       </motion.h1>
 
-      <p className="text-slate-500 mb-10 max-w-xl text-base leading-relaxed">
+      <p className="text-slate-500 dark:text-slate-400 mb-10 max-w-xl text-base leading-relaxed">
         Drag and drop page thumbnails to reorder your PDF, then download the new
         document in your chosen order.
       </p>
@@ -220,10 +220,10 @@ export default function PdfReorder() {
             onDragLeave={() => setIsDragging(false)}
             onClick={() => inputRef.current?.click()}
             className={cn(
-              "w-full border-2 border-dashed rounded-3xl p-10 flex flex-col items-center justify-center cursor-pointer transition-all duration-300",
+              "w-full border-2 border-dashed rounded-3xl p-10 flex flex-col items-center justify-center cursor-pointer transition-all duration-300 dark:border-slate-700",
               isDragging
-                ? "border-[#4361ee] bg-blue-50 scale-[1.03] shadow-lg"
-                : "border-slate-200 bg-slate-50/50 hover:border-[#4361ee] hover:bg-white hover:shadow-xl"
+                ? "border-[#4361ee] bg-blue-50 scale-[1.03] shadow-lg dark:bg-slate-800"
+                : "border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 hover:border-[#4361ee] hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl"
             )}
           >
             <input
@@ -236,14 +236,14 @@ export default function PdfReorder() {
 
             {file ? (
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-blue-100 text-blue-600 rounded-full">
+                <div className="p-3 bg-blue-100 text-blue-600 rounded-full dark:bg-blue-900/30 dark:text-blue-200">
                   <FileText size={24} />
                 </div>
                 <div>
-                  <p className="text-[#1a1a2e] font-bold text-sm truncate max-w-[200px]">
+                  <p className="text-[#1a1a2e] dark:text-white font-bold text-sm truncate max-w-[200px]">
                     {file.name}
                   </p>
-                  <p className="text-slate-500 text-xs">{totalPages} pages</p>
+                  <p className="text-slate-500 dark:text-slate-400 text-xs">{totalPages} pages</p>
                 </div>
                 <button
                   onClick={(e) => {
@@ -259,10 +259,10 @@ export default function PdfReorder() {
               </div>
             ) : (
               <div className="text-center">
-                <div className="mx-auto w-12 h-12 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mb-3">
+                <div className="mx-auto w-12 h-12 bg-slate-100 dark:bg-slate-700 text-slate-400 dark:text-slate-300 rounded-full flex items-center justify-center mb-3">
                   <Upload size={24} />
                 </div>
-                <p className="text-[#1a1a2e] font-bold text-sm">
+                  <p className="text-[#1a1a2e] dark:text-white font-bold text-sm">
                   Click or drag &amp; drop a PDF
                 </p>
               </div>
@@ -270,14 +270,14 @@ export default function PdfReorder() {
           </div>
 
           {pages.length > 0 && (
-            <div className="w-full bg-white border border-gray-200 rounded-3xl p-6 shadow-sm">
+            <div className="w-full bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-3xl p-6 shadow-sm">
               <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-2 text-sm font-bold text-[#1a1a2e] uppercase tracking-wider">
+                <div className="flex items-center gap-2 text-sm font-bold text-[#1a1a2e] dark:text-white uppercase tracking-wider">
                   <GripVertical size={16} /> Drag to Reorder
                 </div>
                 <button
                   onClick={resetOrder}
-                  className="text-[10px] font-bold text-gray-500 hover:text-gray-700 uppercase transition-colors"
+                  className="text-[10px] font-bold text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-white uppercase transition-colors"
                 >
                   Reset Order
                 </button>
@@ -293,10 +293,10 @@ export default function PdfReorder() {
                     onDragOver={(e) => e.preventDefault()}
                     onDragEnd={handleDragEnd}
                     className={cn(
-                      "relative group bg-white border rounded-2xl p-2 transition-all cursor-grab active:cursor-grabbing",
+                      "relative group bg-white dark:bg-slate-900 border dark:border-slate-700 rounded-2xl p-2 transition-all cursor-grab active:cursor-grabbing",
                       overIndex === idx
-                        ? "border-[#4361ee] ring-2 ring-blue-200 scale-[1.02]"
-                        : "border-slate-100 hover:shadow-lg",
+                        ? "border-[#4361ee] ring-2 ring-blue-200/60 scale-[1.02]"
+                        : "border-slate-100 dark:border-slate-800 hover:shadow-lg",
                       dragIndex === idx && "opacity-50"
                     )}
                   >
@@ -312,7 +312,7 @@ export default function PdfReorder() {
                       />
                     </div>
 
-                    <div className="flex items-center justify-between text-[10px] font-bold text-slate-500">
+                    <div className="flex items-center justify-between text-[10px] font-bold text-slate-500 dark:text-slate-400">
                       <span>Page {idx + 1}</span>
                       <div className="flex gap-1">
                         <button
@@ -349,8 +349,8 @@ export default function PdfReorder() {
 
         {/* Right Panel */}
         <div className="space-y-6">
-          <div className="w-full bg-white border border-gray-200 rounded-3xl p-8 shadow-sm text-left">
-            <div className="flex items-center gap-2 text-sm font-bold text-[#1a1a2e] uppercase tracking-wider mb-6">
+              <div className="w-full bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-3xl p-8 shadow-sm text-left">
+            <div className="flex items-center gap-2 text-sm font-bold text-[#1a1a2e] dark:text-white uppercase tracking-wider mb-6">
               <RefreshCcw size={16} /> Actions
             </div>
 
@@ -381,15 +381,15 @@ export default function PdfReorder() {
             )}
 
             {error && (
-              <div className="flex items-center gap-2 p-4 bg-red-50 text-red-500 rounded-xl text-xs font-bold">
+              <div className="flex items-center gap-2 p-4 bg-red-50 dark:bg-red-950/30 text-red-500 rounded-xl text-xs font-bold">
                 <AlertCircle size={14} />
                 {error}
               </div>
             )}
 
             {resultUrl && !loading && (
-              <div className="mt-4 p-5 bg-[#f0f9ff] border border-blue-100 rounded-2xl space-y-4">
-                <div className="flex items-center gap-2 text-blue-700 text-xs font-bold uppercase">
+              <div className="mt-4 p-5 bg-[#f0f9ff] dark:bg-slate-900 border border-blue-100 dark:border-slate-700 rounded-2xl space-y-4">
+                <div className="flex items-center gap-2 text-blue-700 dark:text-blue-200 text-xs font-bold uppercase">
                   <CheckCircle2 size={16} />
                   Ready for download
                 </div>
